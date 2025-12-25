@@ -10,6 +10,13 @@ const App = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    const personExists = persons.find(
+      (person) => person.name.toLowerCase() === newName.toLowerCase()
+    );
+    if (personExists) {
+      alert(`${newName} is already added to phonebook`);
+      return;
+    }
     const person = { name: newName };
     setPersons(persons.concat(person));
     setNewName("");
